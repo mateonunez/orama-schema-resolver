@@ -28,7 +28,8 @@ import * as fs from 'fs';
 // You can parse data from any source, but we'll use a local file for this example
 const data = JSON.parse(fs.readFileSync('./package.json').toString());
 const schema = resolveSchema(data);
-const db = create({ schema })
+const db = create({ schema: schema })
+// typescript: const db = create({ schema: schema as unknown as PropertiesSchema }) this will be track with an issue
 
 insert(db, data);
 
