@@ -19,6 +19,8 @@ export default function resolveSchema<S extends ResolveSchema<any>>(data: S): Sc
       schema[key] = "number"
     } else if (typeof value === "boolean") {
       schema[key] = "boolean"
+    } else if (typeof value === "object") {
+      schema[key] = resolveSchema(value)
     }
   }
 
