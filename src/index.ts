@@ -1,13 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/no-unused-vars */
+
+import {PropertiesSchema} from "@lyrasearch/lyra"
 import {ResolveSchema} from "@lyrasearch/lyra/dist/cjs/src/types"
 import {reservedPropertyNames} from "@lyrasearch/lyra/dist/cjs/src/utils"
 
-type Schema<S> = {
-  [K in keyof S]: S[K] extends S ? Schema<S[K]> : S[K]
-}
-
-export default function resolveSchema<S extends ResolveSchema<any>>(data: S): Schema<S> {
+export default function resolveSchema<S extends ResolveSchema<any>>(data: S): PropertiesSchema {
   const schema: any = {}
 
   for (const [key, value] of Object.entries(data)) {
