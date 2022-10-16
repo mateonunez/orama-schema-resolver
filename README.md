@@ -29,7 +29,6 @@ import * as fs from 'fs';
 const data = JSON.parse(fs.readFileSync('./package.json').toString());
 const schema = resolveSchema(data);
 const db = create({ schema: schema })
-// typescript: const db = create({ schema: schema as unknown as PropertiesSchema }) this will be track with an issue
 
 insert(db, data);
 
