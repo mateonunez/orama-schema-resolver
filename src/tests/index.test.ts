@@ -130,14 +130,58 @@ test("resolve", ({test, plan}) => {
     same(resolveSchema(data), schema)
   })
 
-  test("should throw an error if the data contains an unsupported type", async ({throws}) => {
+  test('should support and skip unsupported types', async ({same}) => {
     const data = {
       name: "Lyra",
       stars: 5000,
       is_forked: true,
-      unsupported: () => ({})
+      owner: {
+        name: "Michele Riva",
+        age: 27,
+        is_active: true
+      },
+      sponsor: {
+        name: "NearForm",
+        website: "https://nearform.com"
+      },
+      contributors: [
+        {
+          name: "Paolo Insogna",
+          age: 30,
+          is_active: true
+        },
+        {
+          name: "Mateo Nunez",
+          age: 27,
+          is_active: true
+        }
+      ],
+      unknown: undefined,
+      function: () => ({})
     }
 
-    throws(() => resolveSchema(data), `Unsupported type ${typeof data.unsupported}`)
+    const schema = {
+      name: "string",
+      stars: "number",
+      is_forked: "boolean",
+      owner: {
+        name: "string",
+        age: "number",
+        is_active: "boolean"
+      },
+      sponsor: {
+        name: "string",
+        website: "string"
+      },
+      contributors: [
+        {
+          name: "string",
+          age: "number",
+          is_active: "boolean"
+        }
+      ]
+    }
+
+    same(resolveSchema(data), schema)
   })
 })
