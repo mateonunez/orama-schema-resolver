@@ -32,7 +32,7 @@ export default function resolveSchema<S extends PropertiesSchema>(data: any): S 
     } else if (typeof value === "object") {
       schema[key] = resolveSchema(value)
     } else {
-      throw new Error(`Unsupported type ${typeof value}`)
+      continue
     }
   }
 
