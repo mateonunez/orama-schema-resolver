@@ -13,7 +13,7 @@ test("resolve", ({test, plan}) => {
 
   test("shouln't resolve the reserved properties", async ({same}) => {
     const data = {id: "123", name: "Lyra", stars: 5000, is_forked: true}
-    const schema = {name: "string", stars: "number", is_forked: "boolean"}
+    const schema = {id: "string", name: "string", stars: "number", is_forked: "boolean"}
 
     same(resolveSchema(data), schema)
   })
@@ -101,7 +101,7 @@ test("resolve", ({test, plan}) => {
           name: "Mateo Nunez",
           age: 27,
           is_active: true
-        },
+        }
       ]
     }
 
