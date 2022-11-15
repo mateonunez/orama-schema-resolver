@@ -1,16 +1,16 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { PropertiesSchema } from "@lyrasearch/lyra"
-import { ResolveSchema } from "@lyrasearch/lyra/dist/cjs/src/types"
-import { reservedPropertyNames } from "@lyrasearch/lyra/dist/cjs/src/utils"
+import {PropertiesSchema} from "@lyrasearch/lyra"
+import {ResolveSchema} from "@lyrasearch/lyra/dist/cjs/src/types"
+import {reservedPropertyNames} from "@lyrasearch/lyra/dist/cjs/src/utils"
 
 function computeGreatestElementIdx(arr: any[]): number {
-  const sizes = arr.map((el) => Object.values(el).length)
+  const sizes = arr.map(el => Object.values(el).length)
   const greatesElement = sizes.reduce((max, v) => (max >= v ? max : v), -Infinity)
   return sizes.indexOf(greatesElement)
 }
 
-export default function resolveSchema<S extends PropertiesSchema>(data: any): S & { [key: string]: ResolveSchema<typeof data> } {
+export default function resolveSchema<S extends PropertiesSchema>(data: any): S & {[key: string]: ResolveSchema<typeof data>} {
   const schema: any = {}
 
   if (Array.isArray(data)) {

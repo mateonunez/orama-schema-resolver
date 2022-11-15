@@ -101,7 +101,7 @@ test("resolve", ({test, plan}) => {
           name: "Mateo Nunez",
           age: 27,
           is_active: true
-        },
+        }
       ]
     }
 
