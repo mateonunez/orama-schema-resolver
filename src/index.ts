@@ -2,7 +2,6 @@
 
 import {PropertiesSchema} from "@lyrasearch/lyra"
 import {ResolveSchema} from "@lyrasearch/lyra/dist/cjs/src/types"
-import {reservedPropertyNames} from "@lyrasearch/lyra/dist/cjs/src/utils"
 
 function computeGreatestElementIdx(arr: any[]): number {
   const sizes = arr.map(el => Object.values(el).length)
@@ -19,8 +18,6 @@ export default function resolveSchema<S extends PropertiesSchema>(data: any): S 
   }
 
   for (const [key, value] of Object.entries(data)) {
-    if (reservedPropertyNames.includes(key)) continue
-
     if (typeof value === "string") {
       schema[key] = "string"
     } else if (typeof value === "number") {
