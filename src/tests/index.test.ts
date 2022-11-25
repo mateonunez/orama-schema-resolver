@@ -130,7 +130,7 @@ test("resolve", ({test, plan}) => {
     same(resolveSchema(data), schema)
   })
 
-  test('should support and skip unsupported types', async ({same}) => {
+  test("should support and skip unsupported types", async ({same}) => {
     const data = {
       name: "Lyra",
       stars: 5000,
