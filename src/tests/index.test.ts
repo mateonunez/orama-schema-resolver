@@ -185,3 +185,25 @@ test("resolve", ({test, plan}) => {
     same(resolveSchema(data), schema)
   })
 })
+
+test("strict mode", async ({same, end}) => {
+  const data = {
+    name: "Lyra",
+    stars: 5000,
+    is_forked: true,
+    owner: {
+      name: "Michele Riva",
+      age: 27
+    }
+  }
+
+  const schema = {
+    name: "string",
+    stars: "string",
+    is_forked: "string",
+    owner: "string"
+  }
+
+  same(resolveSchema(data, {strict: false}), schema)
+  end()
+})
