@@ -1,8 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-
-import {PropertiesSchema} from "@lyrasearch/lyra"
-import {ResolveSchema} from "@lyrasearch/lyra/dist/cjs/src/types"
 import type {ResolveSchemaOptions} from "./types/resolve-schema"
+import type {PropertiesSchema} from "@lyrasearch/lyra/dist/types"
+import type {ResolveSchema} from "@lyrasearch/lyra/dist/types"
 
 function computeGreatestElementIdx(arr: any[]): number {
   const sizes = arr.map(el => Object.values(el).length)
