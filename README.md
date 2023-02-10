@@ -9,20 +9,20 @@ Create your [Lyra](https://github.com/lyrasearch/lyra) schema following the offi
 You can install the package using `npm`, `yarn` or `pnpm`:
 
 ```sh
-npm i @mateonunez/lyra-schema-resolver
+npm i lyra-schema-resolver
 ```
 ```sh
-yarn add @mateonunez/lyra-schema-resolver
+yarn add lyra-schema-resolver
 ```
 ```sh
-pnpm add @mateonunez/lyra-schema-resolver
+pnpm add lyra-schema-resolver
 ```
 
 ## Usage
 
 ```js
 import { create, insert, search } from '@lyrasearch/lyra';
-import resolveSchema from '.';
+import resolveSchema from 'lyra-schema-resolver';
 import * as fs from 'fs';
 
 // You can parse data from any source, but we'll use a local file for this example
