@@ -20,7 +20,7 @@ export default function resolveSchema<S extends PropertiesSchema>(data: any, opt
   const strict = options?.strict ?? true
   const schema: any = {}
 
-  if (Array.isArray(data)) {
+  if (Array.isArray(data) && strict) {
     const greatestElementIdx = computeGreatestElementIdx(data)
     return resolveSchema(data[greatestElementIdx], options)
   }
