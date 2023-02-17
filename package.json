@@ -25,7 +25,8 @@
     "build:esm": "tsc --project tsconfig.esm.json",
     "build:browser": "esbuild --bundle --sourcemap --target=es2019 --format=esm --outfile=./dist/client/index.js ./src/index.ts",
     "build": "rimraf ./dist && npm run build:esm && npm run build:cjs && npm run build:browser",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "benchmark": "npm run build ; node --no-warnings ./benchmark/lyra-schema-resolver.mjs"
   },
   "keywords": [
     "lyra",
@@ -49,6 +50,7 @@
     "@typescript-eslint/eslint-plugin": "^5.52.0",
     "@typescript-eslint/parser": "^5.52.0",
     "c8": "^7.13.0",
+    "cronometro": "^1.1.5",
     "esbuild": "^0.17.8",
     "eslint": "^8.34.0",
     "husky": "^8.0.3",
