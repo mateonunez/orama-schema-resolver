@@ -1,6 +1,6 @@
 {
   "name": "lyra-schema-resolver",
-  "version": "0.1.4",
+  "version": "0.2.0",
   "description": "Create your Lyra's schema following the official specification",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
