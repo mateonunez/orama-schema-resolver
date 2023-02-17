@@ -4,9 +4,16 @@ import type {PropertiesSchema} from "@lyrasearch/lyra/dist/types"
 import type {ResolveSchema} from "@lyrasearch/lyra/dist/types"
 
 function computeGreatestElementIdx(arr: any[]): number {
-  const sizes = arr.map(el => Object.values(el).length)
-  const greatesElement = sizes.reduce((max, v) => (max >= v ? max : v), -Infinity)
-  return sizes.indexOf(greatesElement)
+  let maxIdx = -1
+  let maxSize = -Infinity
+  for (let i = 0; i < arr.length; i++) {
+    const size = Object.values(arr[i]).length
+    if (size > maxSize) {
+      maxSize = size
+      maxIdx = i
+    }
+  }
+  return maxIdx
 }
 
 export default function resolveSchema<S extends PropertiesSchema>(data: any, options?: ResolveSchemaOptions): S & {[key: string]: ResolveSchema<typeof data>} {
