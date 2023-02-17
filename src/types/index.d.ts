@@ -6,5 +6,5 @@ export type ResolveSchemaOptions = {
 export type Data = Record<string, any>
 
 export type ResolvedSchema<T extends Data> = {
-  [K in keyof T]: ResolvedSchema<T[K]> | "string" | "number" | "boolean" | "array" | "object"
+  [K in keyof T]: T[K] extends object ? ResolvedSchema<T[K]> : "string" | "number" | "boolean"
 }
