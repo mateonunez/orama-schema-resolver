@@ -186,7 +186,7 @@ test("resolve", ({test, plan}) => {
   })
 })
 
-test("strict mode", async ({same, end}) => {
+test("strict mode", async ({same}) => {
   const data = {
     name: "Lyra",
     stars: 5000,
@@ -205,5 +205,4 @@ test("strict mode", async ({same, end}) => {
   }
 
   same(resolveSchema(data, {strict: false}), schema)
-  end()
 })
