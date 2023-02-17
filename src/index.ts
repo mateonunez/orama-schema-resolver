@@ -1,24 +1,10 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import type {ResolveSchemaOptions} from "./types/resolve-schema"
-import type {PropertiesSchema} from "@lyrasearch/lyra/dist/types"
-import type {ResolveSchema} from "@lyrasearch/lyra/dist/types"
+import type {ResolveSchemaOptions} from "./types"
+import type {Data, ResolvedSchema} from "./types"
+import {computeGreatestElementIdx} from "./util"
 
-function computeGreatestElementIdx(arr: any[]): number {
-  let maxIdx = -1
-  let maxSize = -Infinity
-  for (let i = 0; i < arr.length; i++) {
-    const size = Object.values(arr[i]).length
-    if (size > maxSize) {
-      maxSize = size
-      maxIdx = i
-    }
-  }
-  return maxIdx
-}
-
-export default function resolveSchema<S extends PropertiesSchema>(data: any, options?: ResolveSchemaOptions): S & {[key: string]: ResolveSchema<typeof data>} {
+export default function resolveSchema<T extends Data>(data: T, options?: ResolveSchemaOptions): ResolvedSchema<T> {
   const strict = options?.strict ?? true
-  const schema: any = {}
+  const schema: Data = {}
 
   if (Array.isArray(data) && strict) {
     const greatestElementIdx = computeGreatestElementIdx(data)
@@ -31,23 +17,24 @@ export default function resolveSchema<S extends PropertiesSchema>(data: any, opt
       continue
     }
 
-    if (typeof value === "string") {
+    const typeValue = typeof value
+    if (typeValue === "string") {
       schema[key] = "string"
-    } else if (typeof value === "number") {
+    } else if (typeValue === "number") {
       schema[key] = "number"
-    } else if (typeof value === "boolean") {
+    } else if (typeValue === "boolean") {
       schema[key] = "boolean"
     } else if (Array.isArray(value)) {
       if (!schema[key]) {
         schema[key] = []
         schema[key].push(resolveSchema(value, options))
       }
-    } else if (typeof value === "object") {
+    } else if (typeValue === "object") {
       schema[key] = resolveSchema(value, options)
     } else {
       continue
     }
   }
 
-  return schema
+  return schema as ResolvedSchema<T>
 }
