@@ -43,9 +43,6 @@
     "url": "https://github.com/mateonunez"
   },
   "license": "MIT",
-  "dependencies": {
-    "@lyrasearch/lyra": "^0.4.9"
-  },
   "devDependencies": {
     "@types/node": "^18.13.0",
     "@types/tap": "^15.0.8",
