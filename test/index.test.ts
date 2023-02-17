@@ -1,4 +1,4 @@
-import resolveSchema from ".."
+import resolveSchema from "../src"
 import {test} from "tap"
 
 test("resolve", ({test, plan}) => {
@@ -14,6 +14,10 @@ test("resolve", ({test, plan}) => {
   test("shouln't resolve the reserved properties", async ({same}) => {
     const data = {id: "123", name: "Lyra", stars: 5000, is_forked: true}
     const schema = {id: "string", name: "string", stars: "number", is_forked: "boolean"}
+
+    const resolvedSchema = resolveSchema(data)
+
+    console.log(resolvedSchema.name)
 
     same(resolveSchema(data), schema)
   })

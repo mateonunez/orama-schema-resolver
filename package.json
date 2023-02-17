@@ -4,7 +4,7 @@
   "description": "Create your Lyra's schema following the official specification",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
-  "types": "./dist/esm/index.d.ts",
+  "types": "./dist/cjs/index.d.ts",
   "browser": "./dist/client/index.js",
   "homepage": "https://github.com/mateonunez/lyra-schema-resolver#readme",
   "repository": {
@@ -20,7 +20,9 @@
   "scripts": {
     "format": "prettier --write \"src/**/*.{ts,js}\" --ignore-path .gitignore",
     "lint": "npm run format && eslint . --ext .js,.ts --ignore-path .gitignore",
-    "test": "npm run lint && c8 -c ./src/tests/config/c8.json tap --rcfile=./src/tests/config/tap.yml ./src/tests/**/*.test.ts",
+    "test:unit": "npm run lint && c8 -c ./test/config/c8.json tap --rcfile=./test/config/tap.yml ./test/**/*.test.ts",
+    "test:typescript": "npm run build:cjs ; tsd --files ./test/types/**/*test-d.ts --",
+    "test": "npm run test:unit ; npm run test:typescript",
     "build:cjs": "tsc --project tsconfig.cjs.json",
     "build:esm": "tsc --project tsconfig.esm.json",
     "build:browser": "esbuild --bundle --sourcemap --target=es2019 --format=esm --outfile=./dist/client/index.js ./src/index.ts",
@@ -58,6 +60,7 @@
     "rimraf": "^4.1.2",
     "tap": "^16.3.4",
     "ts-node": "^10.9.1",
+    "tsd": "^0.25.0",
     "typescript": "^4.9.5"
   },
   "publishConfig": {
