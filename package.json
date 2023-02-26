@@ -2,10 +2,7 @@
   "name": "lyra-schema-resolver",
   "version": "0.2.0",
   "description": "Create your Lyra's schema following the official specification",
-  "main": "./dist/cjs/index.js",
-  "module": "./dist/esm/index.js",
   "types": "./dist/cjs/index.d.ts",
-  "browser": "./dist/client/index.js",
   "homepage": "https://github.com/mateonunez/lyra-schema-resolver#readme",
   "repository": {
     "type": "git",
@@ -17,6 +14,14 @@
   "files": [
     "dist"
   ],
+  "exports": {
+    ".": {
+      "types": "./dist/cjs/index.d.ts",
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js",
+      "browser": "./dist/client/index.js"
+    }
+  },
   "scripts": {
     "format": "prettier --write \"src/**/*.{ts,js}\" --ignore-path .gitignore",
     "lint": "npm run format && eslint . --ext .js,.ts --ignore-path .gitignore",
