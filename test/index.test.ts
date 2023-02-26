@@ -2,7 +2,7 @@ import resolveSchema from "../src"
 import {test} from "tap"
 
 test("resolve", ({test, plan}) => {
-  plan(6)
+  plan(7)
 
   test("should resolve a simple schema using primitives", async ({same}) => {
     const data = {name: "Lyra", stars: 5000, is_forked: true}
@@ -188,6 +188,29 @@ test("resolve", ({test, plan}) => {
 
     same(resolveSchema(data), schema)
   })
+
+  test("should resolve a schema with arrays of objects", async ({same}) => {
+    const data = [
+      {
+        name: "Lyra",
+        stars: 5000,
+        is_forked: true,
+      },
+      {
+        name: "lyra-schema-resolver",
+        stars: 100,
+        is_forked: false,
+      }
+    ]
+
+    const schema = {
+      name: "string",
+      stars: "number",
+      is_forked: "boolean"
+    }
+
+    same(resolveSchema(data), schema)
+  })
 })
 
 test("strict mode", async ({same}) => {
@@ -206,6 +229,29 @@ test("strict mode", async ({same}) => {
     stars: "string",
     is_forked: "string",
     owner: "string"
+  }
+
+  same(resolveSchema(data, {strict: false}), schema)
+})
+
+test("strict mode with arrays", async ({same}) => {
+  const data = [
+    {
+      name: "Lyra",
+      stars: 5000,
+      is_forked: true,
+    },
+    {
+      name: "lyra-schema-resolver",
+      stars: 100,
+      is_forked: false,
+    }
+  ]
+
+  const schema = {
+    name: "string",
+    stars: "string",
+    is_forked: "string"
   }
 
   same(resolveSchema(data, {strict: false}), schema)
