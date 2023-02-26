@@ -6,7 +6,7 @@ export default function resolveSchema<T extends Data>(data: T, options?: Resolve
   const strict = options?.strict ?? true
   const schema: Data = {}
 
-  if (Array.isArray(data) && strict) {
+  if (Array.isArray(data)) {
     const greatestElementIdx = computeGreatestElementIdx(data)
     return resolveSchema(data[greatestElementIdx], options)
   }
