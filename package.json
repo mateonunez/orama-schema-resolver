@@ -52,7 +52,7 @@
     "@lyrasearch/lyra": "^0.4.9"
   },
   "devDependencies": {
-    "@types/node": "^18.14.1",
+    "@types/node": "^20.1.1",
     "@types/tap": "^15.0.8",
     "@typescript-eslint/eslint-plugin": "^5.53.0",
     "@typescript-eslint/parser": "^5.53.0",
