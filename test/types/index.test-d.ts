@@ -1,7 +1,7 @@
 import {expectType} from "tsd"
 
 import type {ResolvedSchema} from "../../src/types"
-import resolveSchema from "../../src"
+import resolveSchema from "../../src/index.js"
 
 const schema = resolveSchema({
   name: "John",
