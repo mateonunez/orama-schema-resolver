@@ -1,6 +1,6 @@
 {
   "name": "orama-schema-resolver",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "description": "Create your Orama's schema following the official specification",
   "types": "./dist/cjs/index.d.ts",
   "homepage": "https://github.com/mateonunez/orama-schema-resolver#readme",

@@ -21,4 +21,3 @@ test("should create an orama db with a resolved schema and a custom id", async (
   const documentId = await insert(db, data);
   ok(documentId);
 })
-
