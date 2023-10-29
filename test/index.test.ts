@@ -5,14 +5,14 @@ test("resolve", ({test, plan}) => {
   plan(7)
 
   test("should resolve a simple schema using primitives", async ({same}) => {
-    const data = {name: "Lyra", stars: 5000, is_forked: true}
+    const data = {name: "Orama", stars: 5000, is_forked: true}
     const schema = {name: "string", stars: "number", is_forked: "boolean"}
 
     same(resolveSchema(data), schema)
   })
 
   test("shouln't resolve the reserved properties", async ({same}) => {
-    const data = {id: "123", name: "Lyra", stars: 5000, is_forked: true}
+    const data = {id: "123", name: "Orama", stars: 5000, is_forked: true}
     const schema = {id: "string", name: "string", stars: "number", is_forked: "boolean"}
 
     const resolvedSchema = resolveSchema(data)
@@ -24,7 +24,7 @@ test("resolve", ({test, plan}) => {
 
   test("should resolve a nested schema", async ({same}) => {
     const data = {
-      name: "Lyra",
+      name: "Orama",
       stars: 5000,
       is_forked: true,
       owner: {
@@ -49,7 +49,7 @@ test("resolve", ({test, plan}) => {
 
   test("should resolve multiple nested schemas", async ({same}) => {
     const data = {
-      name: "Lyra",
+      name: "Orama",
       stars: 5000,
       is_forked: true,
       owner: {
@@ -83,7 +83,7 @@ test("resolve", ({test, plan}) => {
 
   test("should resolve a schema with arrays", async ({same}) => {
     const data = {
-      name: "Lyra",
+      name: "Orama",
       stars: 5000,
       is_forked: true,
       owner: {
@@ -136,7 +136,7 @@ test("resolve", ({test, plan}) => {
 
   test("should support and skip unsupported types", async ({same}) => {
     const data = {
-      name: "Lyra",
+      name: "Orama",
       stars: 5000,
       is_forked: true,
       owner: {
@@ -192,12 +192,12 @@ test("resolve", ({test, plan}) => {
   test("should resolve a schema with arrays of objects", async ({same}) => {
     const data = [
       {
-        name: "Lyra",
+        name: "Orama",
         stars: 5000,
         is_forked: true,
       },
       {
-        name: "lyra-schema-resolver",
+        name: "orama-schema-resolver",
         stars: 100,
         is_forked: false,
       }
@@ -215,7 +215,7 @@ test("resolve", ({test, plan}) => {
 
 test("strict mode", async ({same}) => {
   const data = {
-    name: "Lyra",
+    name: "Orama",
     stars: 5000,
     is_forked: true,
     owner: {
@@ -237,12 +237,12 @@ test("strict mode", async ({same}) => {
 test("strict mode with arrays", async ({same}) => {
   const data = [
     {
-      name: "Lyra",
+      name: "Orama",
       stars: 5000,
       is_forked: true,
     },
     {
-      name: "lyra-schema-resolver",
+      name: "orama-schema-resolver",
       stars: 100,
       is_forked: false,
     }

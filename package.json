@@ -1,15 +1,15 @@
 {
-  "name": "lyra-schema-resolver",
+  "name": "orama-schema-resolver",
   "version": "0.2.2",
-  "description": "Create your Lyra's schema following the official specification",
+  "description": "Create your Orama's schema following the official specification",
   "types": "./dist/cjs/index.d.ts",
-  "homepage": "https://github.com/mateonunez/lyra-schema-resolver#readme",
+  "homepage": "https://github.com/mateonunez/orama-schema-resolver#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/mateonunez/lyra-schema-resolver.git"
+    "url": "https://github.com/mateonunez/orama-schema-resolver.git"
   },
   "bugs": {
-    "url": "https://github.com/mateonunez/lyra-schema-resolver/issues"
+    "url": "https://github.com/mateonunez/orama-schema-resolver/issues"
   },
   "files": [
     "dist"
@@ -33,10 +33,10 @@
     "build:browser": "esbuild --bundle --sourcemap --target=es2019 --format=esm --outfile=./dist/client/index.js ./src/index.ts",
     "build": "rimraf ./dist && npm run build:esm && npm run build:cjs && npm run build:browser",
     "prepare": "husky install",
-    "benchmark": "npm run build ; node --no-warnings ./benchmark/lyra-schema-resolver.mjs"
+    "benchmark": "npm run build ; node --no-warnings ./benchmark/orama-schema-resolver.mjs"
   },
   "keywords": [
-    "lyra",
+    "orama",
     "schema-resolver",
     "full-text search",
     "supercharged",
@@ -49,24 +49,24 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@lyrasearch/lyra": "^0.4.9"
+    "@orama/orama": "2.0.0-beta.3"
   },
   "devDependencies": {
-    "@types/node": "^20.1.1",
-    "@types/tap": "^15.0.8",
-    "@typescript-eslint/eslint-plugin": "^5.53.0",
-    "@typescript-eslint/parser": "^5.53.0",
-    "c8": "^7.13.0",
-    "cronometro": "^1.1.5",
-    "esbuild": "^0.17.10",
-    "eslint": "^8.35.0",
+    "@types/node": "^20.8.9",
+    "@types/tap": "^15.0.10",
+    "@typescript-eslint/eslint-plugin": "^6.9.0",
+    "@typescript-eslint/parser": "^6.9.0",
+    "c8": "^8.0.1",
+    "cronometro": "^1.2.0",
+    "esbuild": "^0.19.5",
+    "eslint": "^8.52.0",
     "husky": "^8.0.3",
-    "prettier": "^2.8.4",
-    "rimraf": "^5.0.0",
-    "tap": "^16.3.4",
+    "prettier": "^3.0.3",
+    "rimraf": "^5.0.5",
+    "tap": "^16.3.9",
     "ts-node": "^10.9.1",
-    "tsd": "^0.28.0",
-    "typescript": "^5.0.2"
+    "tsd": "^0.29.0",
+    "typescript": "^5.2.2"
   },
   "publishConfig": {
     "access": "public"

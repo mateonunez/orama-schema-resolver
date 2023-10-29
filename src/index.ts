@@ -1,5 +1,4 @@
-import type {ResolveSchemaOptions} from "./types"
-import type {Data, ResolvedSchema} from "./types"
+import type {ResolveSchemaOptions, Data, ResolvedSchema} from "./types"
 import {computeGreatestElementIdx} from "./util"
 
 export default function resolveSchema<T extends Data>(data: T, options?: ResolveSchemaOptions): ResolvedSchema<T> {
