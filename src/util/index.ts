@@ -1,4 +1,4 @@
-import type {Data} from "../types"
+import type {Data} from "../types/index.ts"
 
 export function computeGreatestElementIdx(arr: Data[]): number {
   let maxIdx = -1

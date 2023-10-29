@@ -1,4 +1,4 @@
-import resolveSchema from "../src";
+import resolveSchema from "../src/index.js";
 import { test } from "tap";
 import { create, insert, /* search */ } from "@orama/orama";
 

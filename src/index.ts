@@ -1,5 +1,5 @@
 import type {ResolveSchemaOptions, Data, ResolvedSchema} from "./types"
-import {computeGreatestElementIdx} from "./util"
+import {computeGreatestElementIdx} from "./util/index.js"
 
 export default function resolveSchema<T extends Data>(data: T, options?: ResolveSchemaOptions): ResolvedSchema<T> {
   const strict = options?.strict ?? true
